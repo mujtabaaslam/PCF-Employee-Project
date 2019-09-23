@@ -3,6 +3,6 @@ applications:
 - name: companybase
   path: applications/companybase/build/libs/companybase-1.0-SNAPSHOT.war
   routes:
-  - route: ma-company.apps.pcf.paltraining.perficient.com
+    - route: ma-company.apps.pcf.paltraining.perficient.com
   services:
-  - company-database
+    - company-database
