@@ -33,12 +33,12 @@ jobs:
         - wget -P applications/employees-ms/build/libs https://github.com/$GITHUB_USERNAME/companybase/releases/download/$RELEASE_TAG/employees-ms-1.0-SNAPSHOT.jar
         - wget -P applications/clients-ms/build/libs https://github.com/$GITHUB_USERNAME/companybase/releases/download/$RELEASE_TAG/clients-ms-1.0-SNAPSHOT.jar
       before_deploy:
-        - echo "Deploying $RELEASE_TAG to test"
+        - echo "Deploying $RELEASE_TAG to company"
       deploy:
         provider: cloudfoundry
         api: $CF_API_URL
         username: $CF_USERNAME
         password: $CF_PASSWORD
         organization: $CF_ORG
-        space: test
+        space: company
         skip_ssl_validation: true
