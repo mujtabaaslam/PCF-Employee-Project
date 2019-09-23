@@ -2,6 +2,7 @@ apply from: "../../common.gradle"
 
 dependencies {
     compile project (":components:clients")
+    compile project (":components:employees")
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     compile('commons-lang:commons-lang:2.4')
 }
