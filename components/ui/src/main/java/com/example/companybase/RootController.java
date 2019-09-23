@@ -1,7 +1,7 @@
 package com.example.companybase;
 
-import com.example.companybase.clients.ClientsBean;
-import com.example.companybase.clients.ClientsInitialList;
+import com.example.companybase.clientsui.ClientClient;
+import com.example.companybase.clientsui.ClientsInitialList;
 import com.example.companybase.employees.EmployeesBean;
 import com.example.companybase.employees.EmployeesInitialList;
 import org.springframework.stereotype.Controller;
@@ -14,12 +14,12 @@ public class RootController {
     private EmployeesInitialList employeesInitialList;
     private EmployeesBean employeesBean;
     private ClientsInitialList clientsInitialList;
-    private ClientsBean clientsBean;
+    private ClientClient clientClient;
 
-    public RootController(EmployeesInitialList employeesInitialList, EmployeesBean employeesBean, ClientsBean clientsBean, ClientsInitialList clientsInitialList) {
+    public RootController(EmployeesInitialList employeesInitialList, EmployeesBean employeesBean, ClientClient clientClient, ClientsInitialList clientsInitialList) {
         this.employeesInitialList = employeesInitialList;
         this.employeesBean = employeesBean;
-        this.clientsBean = clientsBean;
+        this.clientClient = clientClient;
         this.clientsInitialList = clientsInitialList;
     }
 
@@ -34,9 +34,9 @@ public class RootController {
 
         model.put("employees", employeesBean.getEmployees());
 
-        clientsInitialList.asList().forEach(clientsBean::addClient);
+        clientsInitialList.asList().forEach(clientClient::create);
 
-        model.put("clients", clientsBean.getClients());
+        model.put("clients", clientClient.getAll());
 
         return "setup";
     }
