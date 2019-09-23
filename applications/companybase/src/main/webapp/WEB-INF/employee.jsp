@@ -81,7 +81,7 @@
       type="text" name="email" placeholder="Email" size="14"/> <input
       type="text" name="salary" placeholder="Salary" size="7"/> <input
       type="text" name="title" placeholder="Title" size="4"/> <input
-      type="text" name="department" placeholder="Department" size="4"/>
+      type="text" name="department" placeholder="Department" size="4"
       style="width: 110px;"/> <input type="submit" name="action"
                                      class="btn btn-primary" value="Add"/>
   </form>
