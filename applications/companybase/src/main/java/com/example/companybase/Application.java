@@ -1,8 +1,9 @@
 package com.example.companybase;
 
+import com.example.companybase.employeesui.EmployeeActionServlet;
+import com.example.companybase.employeesui.EmployeeClient;
 import com.example.companybase.clientsui.ClientActionServlet;
 import com.example.companybase.clientsui.ClientClient;
-import com.example.companybase.employees.EmployeeActionServlet;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,8 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class Application {
 
+    @Value("${employees.ms.url")
+    private String employeesURL;
     @Value("${clients.ms.url")
     private String clientsURL;
 
@@ -38,7 +41,11 @@ public class Application {
     }
 
     @Bean
-    public ClientClient movieClient(RestOperations restOperations) {
+    public EmployeeClient employeeClient(RestOperations restOperations) {
+        return new EmployeeClient(employeesURL, restOperations);
+  
+    @Bean
+    public ClientClient clientClient(RestOperations restOperations) {
         return new ClientClient(clientsURL, restOperations);
     }
 }

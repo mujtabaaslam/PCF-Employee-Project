@@ -15,4 +15,5 @@ spring:
 logging.level:
   root: WARN
 
+employees.ms.url: http://localhost:8081/employees
 clients.ms.url: http://localhost:8081/clients

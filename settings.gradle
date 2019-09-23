@@ -2,5 +2,6 @@ rootProject.name = 'companybase'
 include "applications:companybase"
 include "components:employees"
 include "components:clients"
-include "applications:clients-ms"
+include "applications:employees-ms"
 include "components:ui"
+include "applications:clients-ms"
