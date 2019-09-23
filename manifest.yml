@@ -1,8 +1,8 @@
 ---
 applications:
-- name: mediabase
-  path: applications/mediabase/build/libs/mediabase-1.0-SNAPSHOT.war
+- name: companybase
+  path: applications/companybase/build/libs/companybase-1.0-SNAPSHOT.war
   routes:
-  - route: ma-mediabase.apps.pcf.paltraining.perficient.com
+  - route: ma-company.apps.pcf.paltraining.perficient.com
   services:
-  - media-database
+  - company-database
