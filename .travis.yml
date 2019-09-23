@@ -35,5 +35,5 @@ jobs:
       username: $CF_USERNAME
       password: $CF_PASSWORD
       organization: $CF_ORG
-      space: test
+      space: company
       skip_ssl_validation: true
