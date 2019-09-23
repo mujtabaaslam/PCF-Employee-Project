@@ -1,4 +1,4 @@
-package com.example.companybase.clients;
+package com.example.companybase.clientsui;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
@@ -16,10 +16,10 @@ public class ClientActionServlet extends HttpServlet {
 
     public static int PAGE_SIZE = 5;
 
-    private ClientsBean clientsBean;
+    private ClientClient clientClient;
 
-    public ClientActionServlet(ClientsBean clientsBean){
-        this.clientsBean = clientsBean;
+    public ClientActionServlet(ClientClient clientClient){
+        this.clientClient = clientClient;
     }
 
     @Override
@@ -41,16 +41,16 @@ public class ClientActionServlet extends HttpServlet {
             int years = Integer.parseInt(request.getParameter("years"));
             long projectValue = Long.parseLong(request.getParameter("projectValue"));
 
-            Client client = new Client(name, email, years, projectValue);
+            ClientUI client = new ClientUI(name, email, years, projectValue);
 
-            clientsBean.addClient(client);
+            clientClient.create(client);
             response.sendRedirect("client");
 
             return;
         } else if ("Remove".equals(action)){
             String[] ids = request.getParameterValues("id");
             for(String id: ids){
-                clientsBean.deleteClientId(new Long(id));
+                clientClient.delete(new Long(id));
             }
 
             response.sendRedirect("client");
@@ -63,11 +63,11 @@ public class ClientActionServlet extends HttpServlet {
             int count = 0;
 
             if(StringUtils.isEmpty(key) || StringUtils.isEmpty(field)){
-                count = clientsBean.countAll();
+                count = clientClient.countAll();
                 key = "";
                 field = "";
             } else{
-                count = clientsBean.count(field, key);
+                count = clientClient.count(field, key);
             }
 
             int page = 1;
@@ -92,12 +92,12 @@ public class ClientActionServlet extends HttpServlet {
             }
 
             int start = (page - 1) * PAGE_SIZE;
-            List<Client> range;
+            List<ClientUI> range;
 
             if(StringUtils.isEmpty(key) || StringUtils.isEmpty(field)){
-                range = clientsBean.findAll(start, PAGE_SIZE);
+                range = clientClient.findAll(start, PAGE_SIZE);
             } else {
-                range = clientsBean.findRange(field, key, start, PAGE_SIZE);
+                range = clientClient.findRange(field, key, start, PAGE_SIZE);
             }
 
             int end = start + range.size();
