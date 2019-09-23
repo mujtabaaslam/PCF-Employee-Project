@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.companybase.employees;
+package com.example.companybase.employeesui;
 
 
 import org.apache.commons.lang.StringUtils;
@@ -36,9 +36,9 @@ public class EmployeeActionServlet extends HttpServlet {
 
     public static int PAGE_SIZE = 5;
 
-    private EmployeesBean employeesBean;
+    private EmployeeClient employeesBean;
 
-    public EmployeeActionServlet(EmployeesBean employeesBean) {
+    public EmployeeActionServlet(EmployeeClient employeesBean) {
         this.employeesBean = employeesBean;
     }
 
@@ -64,9 +64,9 @@ public class EmployeeActionServlet extends HttpServlet {
             String title = request.getParameter("title");
             String department = request.getParameter("department");
 
-            Employee employee = new Employee(firstName, lastName, email, salary, title, department);
+            EmployeeUI employee = new EmployeeUI(firstName, lastName, email, salary, title, department);
 
-            employeesBean.addEmployee(employee);
+            employeesBean.create(employee);
             response.sendRedirect("employee");
             return;
 
@@ -74,7 +74,7 @@ public class EmployeeActionServlet extends HttpServlet {
 
             String[] ids = request.getParameterValues("id");
             for (String id : ids) {
-                employeesBean.deleteEmployeeId(new Long(id));
+                employeesBean.delete(new Long(id));
             }
 
             response.sendRedirect("employee");
@@ -115,7 +115,7 @@ public class EmployeeActionServlet extends HttpServlet {
             }
 
             int start = (page - 1) * PAGE_SIZE;
-            List<Employee> range;
+            List<EmployeeUI> range;
 
             if (StringUtils.isEmpty(key) || StringUtils.isEmpty(field)) {
                 range = employeesBean.findAll(start, PAGE_SIZE);
