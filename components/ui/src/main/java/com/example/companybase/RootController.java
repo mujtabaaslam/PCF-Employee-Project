@@ -13,13 +13,13 @@ import java.util.Map;
 @Controller
 public class RootController {
     private EmployeesInitialList employeesInitialList;
-    private EmployeeClient employeesBean;
+    private EmployeeClient employeesClient;
     private ClientsInitialList clientsInitialList;
   private ClientClient clientClient;
 
-    public RootController(EmployeesInitialList employeesInitialList, EmployeeClient employeesBean, ClientClient clientClient, ClientsInitialList clientsInitialList) {
+    public RootController(EmployeesInitialList employeesInitialList, EmployeeClient employeesClient, ClientClient clientClient, ClientsInitialList clientsInitialList) {
         this.employeesInitialList = employeesInitialList;
-        this.employeesBean = employeesBean;
+        this.employeesClient = employeesClient;
         this.clientClient = clientClient;
         this.clientsInitialList = clientsInitialList;
       
@@ -33,9 +33,9 @@ public class RootController {
 
     @GetMapping("/setup")
     public String setupDatabase(Map<String, Object> model) {
-        employeesInitialList.asList().forEach(employeesBean::create);
+        employeesInitialList.asList().forEach(employeesClient::create);
 
-        model.put("employees", employeesBean.getAll());
+        model.put("employees", employeesClient.getAll());
 
         clientsInitialList.asList().forEach(clientClient::create);
 

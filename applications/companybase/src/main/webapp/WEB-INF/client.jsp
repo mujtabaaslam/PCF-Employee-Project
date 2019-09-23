@@ -68,7 +68,7 @@
 
 <div class="container">
 
-  <h1>Client</h1>
+  <h1>Clients</h1>
 
   <form class="client-input-form form-inline" action="client"
         method="post">

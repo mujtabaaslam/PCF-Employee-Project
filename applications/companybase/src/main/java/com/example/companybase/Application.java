@@ -15,9 +15,9 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class Application {
 
-    @Value("${employees.ms.url")
+    @Value("${employees.ms.url}")
     private String employeesURL;
-    @Value("${clients.ms.url")
+    @Value("${clients.ms.url}")
     private String clientsURL;
 
     public static void main(String... args) {
@@ -43,6 +43,7 @@ public class Application {
     @Bean
     public EmployeeClient employeeClient(RestOperations restOperations) {
         return new EmployeeClient(employeesURL, restOperations);
+    }
   
     @Bean
     public ClientClient clientClient(RestOperations restOperations) {

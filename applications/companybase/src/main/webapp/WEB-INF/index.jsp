@@ -59,7 +59,7 @@
 
 <div class="container">
 
-  <h1>Mediabase</h1>
+  <h1>Company Database</h1>
 
   <p>Please select one of the following links:</p>
   <a href="setup">Setup</a> - Sets up the application with some sample data<br/>
