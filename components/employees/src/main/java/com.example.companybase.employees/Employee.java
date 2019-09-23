@@ -31,24 +31,23 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String FirstName;
-    private String LastName;
+    private String firstName;
+    private String lastName;
     private String email;
-    private int Salary;
-    private String Title;
-    private String Department;
+    private int salary;
+    private String title;
+    private String department;
 
     public Employee() {
     }
 
-    public Employee(String FirstName, String LastName, String email, int Salary, String Title, String Department) {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
+    public Employee(String firstName, String lastName, String email, int salary, String title, String department) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.Salary = Salary;
-        this.Title = Title;
-        this.Department = Department;
-
+        this.salary = salary;
+        this.title = title;
+        this.department = department;
     }
 
     public long getId() {
@@ -60,30 +59,50 @@ public class Employee implements Serializable {
     }
 
     public String getFirstName() {
-        return this.FirstName;
+        return firstName;
     }
 
-    public void setFirstName(String FirstName) {this.FirstName = FirstName;}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    public String getLastName(){return this.LastName;}
+    public String getLastName() {
+        return lastName;
+    }
 
-    public void setLastName(String LastName) {this.LastName = LastName;}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-    public String getEmail() {return this.email;}
+    public String getEmail() {
+        return email;
+    }
 
-    public void setEmail() {this.email = email;}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public int getSalary() {return this.Salary;}
+    public int getSalary() {
+        return salary;
+    }
 
-    public void setSalary(int salary) {this.Salary = salary;}
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
 
-    public String getTitle() {return this.Title;}
+    public String getTitle() {
+        return title;
+    }
 
-    public void setTitle(String title) {this.Title = title;}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public String getDepartment(){return this.Department;}
+    public String getDepartment() {
+        return department;
+    }
 
     public void setDepartment(String department) {
-        this.Department = department;
+        this.department = department;
     }
 }

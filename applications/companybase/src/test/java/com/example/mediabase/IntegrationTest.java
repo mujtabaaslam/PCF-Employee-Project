@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class IntegrationTest {
-
+/*
     @Test
     public void podcastTest() {
 
@@ -38,4 +38,5 @@ public class IntegrationTest {
 
         return baseUrl + path;
     }
+ */
 }

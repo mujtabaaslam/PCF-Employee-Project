@@ -14,10 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.mediabase.movies;
+package com.example.companybase.employees;
 
-import com.example.mediabase.movies.Movie;
-import com.example.mediabase.movies.MoviesBean;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -32,16 +31,15 @@ import java.util.List;
  * @version $Revision$ $Date$
  */
 @Component
-public class ActionServlet extends HttpServlet {
+public class EmployeeActionServlet extends HttpServlet {
 
-    private static final long serialVersionUID = -5832176047021911038L;
 
     public static int PAGE_SIZE = 5;
 
-    private MoviesBean moviesBean;
+    private EmployeesBean employeesBean;
 
-    public ActionServlet(MoviesBean moviesBean) {
-        this.moviesBean = moviesBean;
+    public EmployeeActionServlet(EmployeesBean employeesBean) {
+        this.employeesBean = employeesBean;
     }
 
     @Override
@@ -59,26 +57,27 @@ public class ActionServlet extends HttpServlet {
 
         if ("Add".equals(action)) {
 
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String email = request.getParameter("email");
+            int salary = Integer.parseInt(request.getParameter("salary"));
             String title = request.getParameter("title");
-            String director = request.getParameter("director");
-            String genre = request.getParameter("genre");
-            int rating = Integer.parseInt(request.getParameter("rating"));
-            int year = Integer.parseInt(request.getParameter("year"));
+            String department = request.getParameter("department");
 
-            Movie movie = new Movie(title, director, genre, rating, year);
+            Employee employee = new Employee(firstName, lastName, email, salary, title, department);
 
-            moviesBean.addMovie(movie);
-            response.sendRedirect("moviefun");
+            employeesBean.addEmployee(employee);
+            response.sendRedirect("employee");
             return;
 
         } else if ("Remove".equals(action)) {
 
             String[] ids = request.getParameterValues("id");
             for (String id : ids) {
-                moviesBean.deleteMovieId(new Long(id));
+                employeesBean.deleteEmployeeId(new Long(id));
             }
 
-            response.sendRedirect("moviefun");
+            response.sendRedirect("employee");
             return;
 
         } else {
@@ -88,11 +87,11 @@ public class ActionServlet extends HttpServlet {
             int count = 0;
 
             if (StringUtils.isEmpty(key) || StringUtils.isEmpty(field)) {
-                count = moviesBean.countAll();
+                count = employeesBean.countAll();
                 key = "";
                 field = "";
             } else {
-                count = moviesBean.count(field, key);
+                count = employeesBean.count(field, key);
             }
 
             int page = 1;
@@ -116,12 +115,12 @@ public class ActionServlet extends HttpServlet {
             }
 
             int start = (page - 1) * PAGE_SIZE;
-            List<Movie> range;
+            List<Employee> range;
 
             if (StringUtils.isEmpty(key) || StringUtils.isEmpty(field)) {
-                range = moviesBean.findAll(start, PAGE_SIZE);
+                range = employeesBean.findAll(start, PAGE_SIZE);
             } else {
-                range = moviesBean.findRange(field, key, start, PAGE_SIZE);
+                range = employeesBean.findRange(field, key, start, PAGE_SIZE);
             }
 
             int end = start + range.size();
@@ -131,12 +130,12 @@ public class ActionServlet extends HttpServlet {
             request.setAttribute("end", end);
             request.setAttribute("page", page);
             request.setAttribute("pageCount", pageCount);
-            request.setAttribute("movies", range);
+            request.setAttribute("employees", range);
             request.setAttribute("key", key);
             request.setAttribute("field", field);
         }
 
-        request.getRequestDispatcher("WEB-INF/moviefun.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/employee.jsp").forward(request, response);
     }
 
 }

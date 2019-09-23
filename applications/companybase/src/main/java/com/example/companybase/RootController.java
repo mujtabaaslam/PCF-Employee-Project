@@ -1,12 +1,11 @@
 package com.example.companybase;
 
-import com.example.mediabase.movies.MoviesBean;
-import com.example.mediabase.podcasts.Podcast;
-import com.example.mediabase.podcasts.PodcastInitialList;
-import com.example.mediabase.podcasts.PodcastRepository;
+import com.example.companybase.clients.ClientsBean;
+import com.example.companybase.clients.ClientsInitialList;
+import com.example.companybase.employees.EmployeesBean;
+import com.example.companybase.employees.EmployeesInitialList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.example.mediabase.movies.MoviesInitialList;
 
 import java.util.Map;
 
@@ -14,14 +13,14 @@ import java.util.Map;
 public class RootController {
     private EmployeesInitialList employeesInitialList;
     private EmployeesBean employeesBean;
-    private ClientRepository clientRepository;
-    private ClientInitialList clientInitialList;
+    private ClientsInitialList clientsInitialList;
+    private ClientsBean clientsBean;
 
-    public RootController(EmployeesInitialList employeesInitialList, EmployeesBean employeesBean, ClientRepository clientRepository, ClientInitialList clientInitialList) {
+    public RootController(EmployeesInitialList employeesInitialList, EmployeesBean employeesBean, ClientsBean clientsBean, ClientsInitialList clientsInitialList) {
         this.employeesInitialList = employeesInitialList;
         this.employeesBean = employeesBean;
-        this.clientRepository = clientRepository;
-        this.clientInitialList = clientInitialList;
+        this.clientsBean = clientsBean;
+        this.clientsInitialList = clientsInitialList;
     }
 
     @GetMapping("/")
@@ -31,13 +30,13 @@ public class RootController {
 
     @GetMapping("/setup")
     public String setupDatabase(Map<String, Object> model) {
-        employeesInitialList.asList().forEach(employeesBean::addMovie);
+        employeesInitialList.asList().forEach(employeesBean::addEmployee);
 
-        model.put("employees", employeesBean.getMovies());
+        model.put("employees", employeesBean.getEmployees());
 
-        clientInitialList.asList().forEach(clientRepository::save);
+        clientsInitialList.asList().forEach(clientsBean::addClient);
 
-        model.put("clients", clientRepository.findAll());
+        model.put("clients", clientsBean.getClients());
 
         return "setup";
     }

@@ -113,6 +113,6 @@ public class EmployeesBean {
 
     @Transactional
     public void clean() {
-        entityManager.createQuery("delete from Movie").executeUpdate();
+        entityManager.createQuery("delete from Employee").executeUpdate();
     }
 }

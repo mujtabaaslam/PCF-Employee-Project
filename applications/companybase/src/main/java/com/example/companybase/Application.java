@@ -1,6 +1,7 @@
 package com.example.companybase;
 
-import com.example.companybase.employees.ActionServlet;
+import com.example.companybase.clients.ClientActionServlet;
+import com.example.companybase.employees.EmployeeActionServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -14,7 +15,12 @@ public class Application {
     }
 
     @Bean
-    public ServletRegistrationBean registerActionServlet(ActionServlet actionServlet) {
-        return new ServletRegistrationBean(actionServlet, "/moviefun/*");
+    public ServletRegistrationBean registerEmployeeActionServlet(EmployeeActionServlet actionServlet) {
+        return new ServletRegistrationBean(actionServlet, "/employee/*");
+    }
+
+    @Bean
+    public ServletRegistrationBean registerClientActionServlet(ClientActionServlet actionServlet) {
+        return new ServletRegistrationBean(actionServlet, "/client/*");
     }
 }

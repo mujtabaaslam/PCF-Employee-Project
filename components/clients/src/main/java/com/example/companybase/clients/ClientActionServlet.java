@@ -11,15 +11,14 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class ActionServlet extends HttpServlet {
+public class ClientActionServlet extends HttpServlet {
 
-    private static final long serialVersionUID = -5832176047021911038L;
 
     public static int PAGE_SIZE = 5;
 
     private ClientsBean clientsBean;
 
-    public ActionServlet(ClientsBean clientsBean){
+    public ClientActionServlet(ClientsBean clientsBean){
         this.clientsBean = clientsBean;
     }
 
@@ -39,18 +38,24 @@ public class ActionServlet extends HttpServlet {
         if("Add".equals(action)){
             String name = request.getParameter("name");
             String email = request.getParameter("email");
-            int years = Integer.parseInt((request.getParameter("years"));
+            int years = Integer.parseInt(request.getParameter("years"));
             long projectValue = Long.parseLong(request.getParameter("projectValue"));
 
             Client client = new Client(name, email, years, projectValue);
 
             clientsBean.addClient(client);
-            response.sendRedirect("clients");
+            response.sendRedirect("client");
+
+            return;
         } else if ("Remove".equals(action)){
             String[] ids = request.getParameterValues("id");
             for(String id: ids){
                 clientsBean.deleteClientId(new Long(id));
             }
+
+            response.sendRedirect("client");
+            return;
+
         } else{
             String key = request.getParameter("key");
             String field = request.getParameter("field");
@@ -108,7 +113,7 @@ public class ActionServlet extends HttpServlet {
 
         }
 
-        request.getRequestDispatcher("WEB-INF"/clients.jsp).forward(request, response);
+        request.getRequestDispatcher("WEB-INF/client.jsp").forward(request, response);
     }
 
 

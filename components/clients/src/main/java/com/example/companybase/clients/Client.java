@@ -13,7 +13,7 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue
     private long id;
-    private String Name;
+    private String name;
     private String email;
     private int years;
     private long projectValue;
@@ -22,7 +22,7 @@ public class Client implements Serializable {
     }
 
     public Client(String name, String email, int years, long projectValue) {
-        Name = name;
+        this.name = name;
         this.email = email;
         this.years = years;
         this.projectValue = projectValue;
@@ -41,11 +41,11 @@ public class Client implements Serializable {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getEmail() {

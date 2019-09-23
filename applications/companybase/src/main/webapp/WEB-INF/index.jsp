@@ -25,14 +25,15 @@
 <html lang="${language}">
 <head>
   <meta charset="utf-8">
-  <title>Mediabase</title>
+  <title>Company Database</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
 
   <!-- Le styles -->
   <link href="../assets/css/bootstrap.css" rel="stylesheet">
-  <link href="../assets/css/movie.css" rel="stylesheet">
+  <link href="../assets/css/employee.css" rel="stylesheet">
+  <link href="../assets/css/client.css" rel="stylesheet">
   <style>
     body {
       padding-top: 60px;
@@ -50,7 +51,7 @@
       <a class="btn btn-navbar" data-toggle="collapse"
          data-target=".nav-collapse"> <span class="icon-bar"></span> <span
           class="icon-bar"></span> <span class="icon-bar"></span>
-      </a> <a class="brand" href="#">Mediabase</a>
+      </a> <a class="brand" href="/">Company Base</a>
       <!--/.nav-collapse -->
     </div>
   </div>
@@ -62,7 +63,8 @@
 
   <p>Please select one of the following links:</p>
   <a href="setup">Setup</a> - Sets up the application with some sample data<br/>
-  <a href="moviefun">Index</a> - Start the application<br/>
+  <a href="employee">Employees</a> - Start the employee application<br/>
+  <a href="client">Clients</a> - Start the client application<br/>
 
 </div>
 <!-- /container -->

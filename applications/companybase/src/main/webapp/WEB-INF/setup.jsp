@@ -33,7 +33,8 @@
 
   <!-- Le styles -->
   <link href="../assets/css/bootstrap.css" rel="stylesheet">
-  <link href="../assets/css/movie.css" rel="stylesheet">
+  <link href="../assets/css/employee.css" rel="stylesheet">
+  <link href="../assets/css/client.css" rel="stylesheet">
   <style>
     body {
       padding-top: 60px;
@@ -52,7 +53,7 @@
       <a class="btn btn-navbar" data-toggle="collapse"
          data-target=".nav-collapse"> <span class="icon-bar"></span> <span
           class="icon-bar"></span> <span class="icon-bar"></span>
-      </a> <a class="brand" href="#">Mediabase</a>
+      </a> <a class="brand" href="/">Company Base</a>
       <!--/.nav-collapse -->
     </div>
   </div>
@@ -60,47 +61,50 @@
 
 <div class="container">
 
-  <h1>Mediabase</h1>
+  <h1>Company Database</h1>
 
-  <h2>Seeded database with the following movies</h2>
+  <h2>Seeded database with the following employees</h2>
   <table width="500">
     <tr>
-      <td><b>Title</b></td>
-      <td><b>Director</b></td>
-      <td><b>Genre</b></td>
+      <td><b>First Name</b></td>
+      <td><b>Last Name</b></td>
+      <td><b>Email</b></td>
     </tr>
 
-    <c:forEach items="${requestScope.movies}" var="movie">
+    <c:forEach items="${requestScope.employees}" var="employee">
       <tr>
-        <td>${ movie.title }</td>
-        <td>${ movie.director }</td>
-        <td>${ movie.genre }</td>
+        <td>${ employee.firstName }</td>
+        <td>${ employee.lastName }</td>
+        <td>${ employee.email}</td>
       </tr>
     </c:forEach>
 
   </table>
 
 
-  <h2>Seeded database with the following podcasts</h2>
+  <h2>Seeded database with the following clients</h2>
   <table width="1000">
     <tr>
-      <td><b>Title</b></td>
-      <td><b>Description</b></td>
-      <td><b>URL</b></td>
+      <td><b>Name</b></td>
+      <td><b>Email</b></td>
+      <td><b>Years</b></td>
     </tr>
 
-    <c:forEach items="${requestScope.podcasts}" var="podcast">
+    <c:forEach items="${requestScope.clients}" var="client">
       <tr>
-        <td>${ podcast.title }</td>
-        <td>${ podcast.description }</td>
-        <td>${ podcast.url }</td>
+        <td>${ client.name }</td>
+        <td>${ client.email }</td>
+        <td>${ client.years }</td>
       </tr>
     </c:forEach>
 
   </table>
 
-  <h2>Continue</h2>
-  <a href="moviefun">Go to main app</a>
+  <h2>Employees</h2>
+  <a href="employee">Go to employee app</a>
+
+  <h2>Clients</h2>
+    <a href="client">Go to client app</a>
 
 </div>
 <!-- /container -->
