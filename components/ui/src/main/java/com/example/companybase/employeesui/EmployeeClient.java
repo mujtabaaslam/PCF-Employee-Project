@@ -35,7 +35,7 @@ public class EmployeeClient {
     }
 
     public int count(String field, String key) {
-        String URI = UriComponentsBuilder.fromHttpUrl(employeesURL + "/count")
+        String URI = UriComponentsBuilder.fromUriString(employeesURL + "/count")
                 .queryParam("field", field)
                 .queryParam("key", key)
                 .build().toUriString();

@@ -1,11 +1,11 @@
 spring:
 
+  application:
+    name: companybase
+
   mvc.view:
     prefix: /WEB-INF/
     suffix: .jsp
 
 logging.level:
   root: WARN
-
-employees.ms.url: http://localhost:8081/employees
-clients.ms.url: http://localhost:8082/clients

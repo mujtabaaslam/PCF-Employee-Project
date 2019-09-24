@@ -34,7 +34,7 @@ public class ClientClient {
     }
 
     public int count(String field, String key) {
-        String URI = UriComponentsBuilder.fromHttpUrl(ClientsURL + "/count")
+        String URI = UriComponentsBuilder.fromUriString(ClientsURL + "/count")
                 .queryParam("field", field)
                 .queryParam("key", key)
                 .build().toUriString();

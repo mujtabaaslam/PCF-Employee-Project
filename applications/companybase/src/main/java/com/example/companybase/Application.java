@@ -8,17 +8,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
+@EnableEurekaClient
 @SpringBootApplication
 public class Application {
-
-    @Value("${employees.ms.url}")
-    private String employeesURL;
-    @Value("${clients.ms.url}")
-    private String clientsURL;
 
     public static void main(String... args) {
         SpringApplication.run(Application.class, args);
@@ -35,6 +33,7 @@ public class Application {
         return new ServletRegistrationBean(actionServlet, "/client/*");
     }
 
+    @LoadBalanced
     @Bean
     public RestOperations restOperations() {
         return new RestTemplate();
@@ -42,11 +41,11 @@ public class Application {
 
     @Bean
     public EmployeeClient employeeClient(RestOperations restOperations) {
-        return new EmployeeClient(employeesURL, restOperations);
+        return new EmployeeClient("//employees-ms/employees", restOperations);
     }
   
     @Bean
     public ClientClient clientClient(RestOperations restOperations) {
-        return new ClientClient(clientsURL, restOperations);
+        return new ClientClient("//clients-ms/clients", restOperations);
     }
 }

@@ -6,16 +6,17 @@ applications:
       - route: ma-employees-ms.apps.pcf.paltraining.perficient.com
     services:
       - employees-ms-database
+      - service-registry
   - name: clients-ms
     path: applications/clients-ms/build/libs/clients-ms-1.0-SNAPSHOT.jar
     routes:
       - route: ma-clients-ms.apps.pcf.paltraining.perficient.com
     services:
       - clients-ms-database
+      - service-registry
   - name: companybase
     path: applications/companybase/build/libs/companybase-1.0-SNAPSHOT.war
     routes:
       - route: ma-companybase.apps.pcf.paltraining.perficient.com
-    env:
-      EMPLOYEES_MS_URL: http://ma-employees-ms.apps.pcf.paltraining.perficient.com/employees
-      CLIENTS_MS_URL: http://ma-clients-ms.apps.pcf.paltraining.perficient.com/clients
+    services:
+      - service-registry
