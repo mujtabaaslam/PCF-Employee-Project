@@ -109,6 +109,8 @@
         <td><c:out value="${employee.department}"/></td>
         <td><a href="?action=Remove&id=${employee.id}"><i
             class="icon-trash"></i></a></td>
+        <td><a href="/profile?id=${employee.id}"><i
+                     class="icon-user"></i></a></td>
       </tr>
     </c:forEach>
     </tbody>
