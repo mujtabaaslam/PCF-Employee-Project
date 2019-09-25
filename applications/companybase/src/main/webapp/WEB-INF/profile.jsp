@@ -76,9 +76,9 @@
         <ul>
             <li>Email</li>
             <li>Salary</li>
-            <li>Address</li>
-            <li>Skills</li>
-            <li>Certifications</li>
+            <li>Address: ${employeeprofile.address}</li>
+            <li>Skills: ${employeeprofile.skills}</li>
+            <li>Certifications: ${employeeprofile.certifications}</li>
         </ul>
 
     </div>

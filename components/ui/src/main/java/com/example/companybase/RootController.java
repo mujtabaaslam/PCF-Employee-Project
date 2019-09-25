@@ -42,20 +42,20 @@ public class RootController {
 
     @GetMapping("/setup")
     public String setupDatabase(Map<String, Object> model) {
-        List<EmployeeUI> employeeList = employeesInitialList.asList();
-        employeeList.forEach(employeesClient::create);
+        employeesInitialList.asList().forEach(employeesClient::create);
+        model.put("employees", employeesClient.getAll());
+
+        List employees = (List) model.get("employees");
 
         List<Long> ids = new ArrayList<>();
-        for(int i = 0; i < employeeList.size(); i++){
-            ids.add(employeeList.get(i).getId());
+        for(int i = 0; i < employees.size(); i++){
+            EmployeeUI e = (EmployeeUI) employees.get(i);
+            ids.add(e.getId());
         }
 
         List<EmployeeProfileUI> employeeProfileList = employeeProfileInitialList.asList(ids);
         employeeProfileList.forEach(employeeProfileClient::create);
-
         model.put("profiles", employeeProfileClient.findAll());
-
-        model.put("employees", employeesClient.getAll());
 
         clientsInitialList.asList().forEach(clientClient::create);
 

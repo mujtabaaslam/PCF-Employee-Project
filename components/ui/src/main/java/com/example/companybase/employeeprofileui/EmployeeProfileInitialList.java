@@ -10,8 +10,8 @@ public class EmployeeProfileInitialList {
 
     public List<EmployeeProfileUI> asList(List<Long> ids){
         List<EmployeeProfileUI> list = new ArrayList<>();
-        long id = ids.get(0);
-        list.add(new EmployeeProfileUI(id, "a", "b", "c"));
+        list.add(new EmployeeProfileUI(ids.get(0), "a", "b", "c"));
+        list.add(new EmployeeProfileUI(ids.get(1), "d", "ee", "f"));
         return list;
     }
 }
