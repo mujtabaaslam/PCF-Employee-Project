@@ -16,8 +16,21 @@ public class EmployeeProfileActionServlet{
     }
 
     @GetMapping("/profile")
-    public String findProfile(Map<String, Object> model, @RequestParam("id") long id) {
+    public String findProfile(Map<String, Object> model,
+                              @RequestParam("id") long id,
+                              @RequestParam("fn") String firstName,
+                              @RequestParam("ln") String lastName,
+                              @RequestParam("e") String email,
+                              @RequestParam("s") String salary,
+                              @RequestParam("t") String title,
+                              @RequestParam("d") String department) {
         model.put("employeeprofile", employeeProfileClient.find(id));
+        model.put("firstName", firstName);
+        model.put("lastName", lastName);
+        model.put("email", email);
+        model.put("salary", salary);
+        model.put("title", title);
+        model.put("department", department);
         return "profile";
     }
 

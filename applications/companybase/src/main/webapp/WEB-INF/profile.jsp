@@ -64,9 +64,9 @@
     <h1>Employee Profile</h1>
      <div class="pagination-centered">
 
-            <h2>Name: </h2>
-            <h3>Title: </h3>
-            <h3>Department: </h3>
+            <h2>${firstName} ${lastName}</h2>
+            <h3>${title}</h3>
+            <h3>${department}</h3>
 
 
      </div>
@@ -74,8 +74,8 @@
     <div>
         <h4>Details: </h4>
         <ul>
-            <li>Email</li>
-            <li>Salary</li>
+            <li>Email: ${email}</li>
+            <li>Salary: ${salary}</li>
             <li>Address: ${employeeprofile.address}</li>
             <li>Skills: ${employeeprofile.skills}</li>
             <li>Certifications: ${employeeprofile.certifications}</li>
