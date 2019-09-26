@@ -21,6 +21,13 @@ applications:
     services:
       - employeeprofile-ms-database
       - service-registry
+  - name: clientprofile-ms
+    path: applications/clientprofile-ms/build/libs/clientprofile-ms-1.0-SNAPSHOT.jar
+    routes:
+      - route: ma-clientprofile-ms.apps.pcf.paltraining.perficient.com
+    services:
+      - clientprofile-ms-database
+      - service-registry
   - name: companybase
     path: applications/companybase/build/libs/companybase-1.0-SNAPSHOT.war
     routes:

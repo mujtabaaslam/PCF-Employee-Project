@@ -1,5 +1,6 @@
 package com.example.companybase;
 
+import com.example.companybase.clientprofileui.ClientProfileClient;
 import com.example.companybase.employeeprofileui.EmployeeProfileClient;
 import com.example.companybase.employeesui.EmployeeActionServlet;
 import com.example.companybase.employeesui.EmployeeClient;
@@ -53,5 +54,10 @@ public class Application {
     @Bean
     public EmployeeProfileClient employeeProfileClient(RestOperations restOperations) {
         return new EmployeeProfileClient("//employeeprofile-ms/profile", restOperations);
+    }
+
+    @Bean
+    public ClientProfileClient clientProfileClientProfileClient(RestOperations restOperations) {
+        return new ClientProfileClient("//clientprofile-ms/clientprofile", restOperations);
     }
 }

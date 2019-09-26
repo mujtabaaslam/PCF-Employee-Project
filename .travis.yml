@@ -24,7 +24,8 @@ jobs:
           - "applications/companybase/build/libs/companybase-1.0-SNAPSHOT.war"
           - "applications/employees-ms/build/libs/employees-ms-1.0-SNAPSHOT.jar"
           - "applications/clients-ms/build/libs/clients-ms-1.0-SNAPSHOT.jar"
-          - - "applications/employeeprofile-ms/build/libs/employeeprofile-ms-1.0-SNAPSHOT.jar"
+          - "applications/employeeprofile-ms/build/libs/employeeprofile-ms-1.0-SNAPSHOT.jar"
+          - "applications/clientprofile-ms/build/libs/clientprofile-ms-1.0-SNAPSHOT.jar"
         skip_cleanup: true
     - stage: deploy to test
       language: java
@@ -34,6 +35,7 @@ jobs:
         - wget -P applications/employees-ms/build/libs https://github.com/$GITHUB_USERNAME/companybase/releases/download/$RELEASE_TAG/employees-ms-1.0-SNAPSHOT.jar
         - wget -P applications/clients-ms/build/libs https://github.com/$GITHUB_USERNAME/companybase/releases/download/$RELEASE_TAG/clients-ms-1.0-SNAPSHOT.jar
         - wget -P applications/employeeprofile-ms/build/libs https://github.com/$GITHUB_USERNAME/companybase/releases/download/$RELEASE_TAG/employeeprofile-ms-1.0-SNAPSHOT.jar
+        - wget -P applications/clientprofile-ms/build/libs https://github.com/$GITHUB_USERNAME/companybase/releases/download/$RELEASE_TAG/clientprofile-ms-1.0-SNAPSHOT.jar
       before_deploy:
         - echo "Deploying $RELEASE_TAG to company"
       deploy:

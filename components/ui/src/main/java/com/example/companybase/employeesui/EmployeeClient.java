@@ -48,7 +48,7 @@ public class EmployeeClient {
     }
 
     public List<EmployeeUI> getAllFallback() {
-        log.debug("Returning {} movies from the fallback method", lastRead.size());
+        log.debug("Returning {} employees from the fallback method", lastRead.size());
 
         return lastRead;
     }
@@ -100,7 +100,7 @@ public class EmployeeClient {
     }
 
     public List<EmployeeUI> findAllFallback(int offset, int size) {
-        log.debug("Returning {} movies from the fallback method", lastRead.size());
+        log.debug("Returning {} employees from the fallback method", lastRead.size());
         return lastRead;
     }
 
@@ -127,7 +127,7 @@ public class EmployeeClient {
     }
 
     public List<EmployeeUI> findRangeFallback(String field, String key, int offset, int size) {
-        log.debug("Returning {} movies from the fallback method", lastRead.size());
+        log.debug("Returning {} employees from the fallback method", lastRead.size());
         return lastRead;
     }
 }
