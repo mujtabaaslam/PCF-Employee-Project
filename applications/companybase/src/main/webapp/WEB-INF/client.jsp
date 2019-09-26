@@ -100,6 +100,8 @@
         <td><c:out value="${client.projectValue}"/></td>
         <td><a href="?action=Remove&id=${client.id}"><i
             class="icon-trash"></i></a></td>
+        <td><a href="/clientprofile?id=${client.id}&n=${client.name}&e=${client.email}&y=${client.years}&p=${client.projectValue}"><i
+             class="icon-user"></i></a></td>
       </tr>
     </c:forEach>
     </tbody>

@@ -5,7 +5,7 @@ apply plugin: "io.spring.dependency-management"
 
 group 'com.example'
 version '1.0-SNAPSHOT'
-description 'Employee Profile Mircoservice'
+description 'Client Profile Mircoservice'
 
 dependencyManagement {
     imports {
@@ -15,7 +15,7 @@ dependencyManagement {
 }
 
 dependencies {
-    compile project(":components:employee-profile")
+    compile project(":components:client-profile")
 
     compile('io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry')
 
